@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AvaloniaProject">
+    <option name="projectPerEditor">
+      <map>
+        <entry key="AvaloniaDemo/App.axaml" value="AvaloniaDemo/AvaloniaDemo.csproj" />
+        <entry key="AvaloniaDemo/Views/MainWindow.axaml" value="AvaloniaDemo/AvaloniaDemo.csproj" />
+        <entry key="AvaloniaDemo/Views/MultiBacktestParametersComparisonBarChartView.axaml" value="AvaloniaDemo/AvaloniaDemo.csproj" />
+        <entry key="BacktestGui2/App.axaml" value="BacktestGui2/BacktestGui2.csproj" />
+        <entry key="BacktestGui2/Views/BacktestGroupSelectorView.axaml" value="BacktestGui2/BacktestGui2.csproj" />
+        <entry key="BacktestGui2/Views/BacktestSelectorView.axaml" value="BacktestGui2/BacktestGui2.csproj" />
+        <entry key="BacktestGui2/Views/MainWindow.axaml" value="BacktestGui2/BacktestGui2.csproj" />
+      </map>
+    </option>
+  </component>
+</project>

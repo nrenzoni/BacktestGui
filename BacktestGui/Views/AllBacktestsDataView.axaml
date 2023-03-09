@@ -1,0 +1,115 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:system="clr-namespace:System;assembly=System.Runtime"
+             xmlns:viewModels="clr-namespace:BacktestGui.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="BacktestGui.Views.AllBacktestsDataView">
+
+    <Design.DataContext>
+        <viewModels:AllBacktestsDataViewModel />
+    </Design.DataContext>
+
+
+    <Grid RowDefinitions="Auto,Auto,*">
+
+        <TextBlock
+            Grid.Row="0"
+            Margin="5"
+            HorizontalAlignment="Center"
+            Text="All Backtests Data View" />
+
+
+        <Grid
+            Grid.Row="1"
+            RowDefinitions="Auto,Auto">
+
+            <StackPanel
+                Grid.Row="0"
+                Orientation="Horizontal">
+
+                <TextBlock
+                    Margin="5"
+                    Text="Filters:" VerticalAlignment="Center" />
+
+                <TextBlock
+                    Margin="5"
+                    Text="Start Date:" VerticalAlignment="Center" />
+                <CalendarDatePicker Name="StartDatePicker" />
+
+                <TextBlock
+                    Margin="5"
+                    Text="End Date:" VerticalAlignment="Center" />
+                <CalendarDatePicker Name="EndDatePicker" />
+
+                <TextBlock
+                    Margin="5"
+                    Text="Sort Descending:" VerticalAlignment="Center" />
+                <CheckBox
+                    Name="SortDescendingCheckbox"
+                    IsChecked="{Binding SortDescending, Mode=TwoWay}" />
+
+                <TextBlock
+                    Margin="5"
+                    Text="Min Order Fills:" VerticalAlignment="Center" />
+                <TextBox
+                    Margin="5"
+                    Name="MinOrderFillTextBlock"
+                    Text="{Binding MinOrderFills, Mode=TwoWay}" />
+
+                <Button
+                    Margin="5"
+                    Content="Reset Filters"
+                    Name="ResetFilters"
+                    Command="{Binding ResetFilters}" />
+
+                <TextBlock 
+                    Margin="5"
+                    VerticalAlignment="Center"
+                    Text="Group Number:" />
+                <TextBox 
+                    Margin="5"
+                    Text="{Binding GroupNumber}" />
+
+            </StackPanel>
+
+
+        </Grid>
+
+        <DataGrid
+            Grid.Row="2"
+            Margin="5"
+            Name="AllBacktestsDataGrid"
+            DataContext="{Binding FilteredBacktests}"
+            Items="{Binding }"
+            CurrentCellChanged="OnDataGridSelectionChanged"
+            AutoGenerateColumns="False">
+
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Mongo ID" Binding="{Binding IdAsStr}" />
+                <DataGridTextColumn Header="Run Time" Binding="{Binding StartTime}" />
+                <DataGridTextColumn Header="Git Commit" Binding="{Binding GitCommit}" />
+                <DataGridTextColumn Header="Strategies" Binding="{Binding StrategiesConcattedForView}" />
+                <DataGridTextColumn Header="Date Range" Binding="{Binding DateRangeStr}" />
+                <DataGridTextColumn Header="InitialCapital" Binding="{Binding InitialCapital}" />
+                <DataGridTextColumn
+                    Header="Ending Capital"
+                    Binding="{Binding EndingCapital, StringFormat={StaticResource TwoDecimalPlaceStrFormat}}">
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Avg Watched Symbols / Day" Binding="{Binding AvgWatchedSymbolsPerDay}" />
+                <DataGridTextColumn Header="Nickname" Binding="{Binding Nickname}" />
+                <DataGridTextColumn Header="Sim Start DateTime" Binding="{Binding SimulatedStartTimeStr}" />
+                <DataGridTextColumn Header="Sim End DateTime" Binding="{Binding SimulatedEndTimeStr}" />
+                <DataGridTextColumn Header="Parallel Run" Binding="{Binding ParallelRun}" />
+                <DataGridTextColumn Header="Total Order Fills" Binding="{Binding TotalOrderFills}" />
+                <DataGridTextColumn Header="Pnl" Binding="{Binding Pnl}" />
+                <DataGridTextColumn Header="Pnl %" Binding="{Binding PnlPct}" />
+                <DataGridTextColumn Header="Total Roundtrip Trades" Binding="{Binding TotalRoundtripTrades}" />
+                <DataGridTextColumn Header="Group Number" Binding="{Binding GroupingNumber}" />
+            </DataGrid.Columns>
+        </DataGrid>
+
+    </Grid>
+
+</UserControl>

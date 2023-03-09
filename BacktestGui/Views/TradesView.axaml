@@ -1,0 +1,50 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewModels="clr-namespace:BacktestGui.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="BacktestGui.Views.TradesView">
+
+    <Design.DataContext>
+        <viewModels:TradesViewModel />
+    </Design.DataContext>
+
+    <Grid
+        RowDefinitions="Auto,*"
+        Margin="5">
+
+        <TextBlock
+            Grid.ColumnSpan="100"
+            HorizontalAlignment="Center"
+            Text="Trades List" />
+
+        <DataGrid
+            Grid.Row="1"
+            Items="{Binding }"
+            DataContext="{Binding Trades}"
+            AutoGenerateColumns="False">
+
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Number" Binding="{Binding Number}" />
+                <DataGridTextColumn Header="Symbol" Binding="{Binding Symbol}" />
+                <DataGridTextColumn Header="OpenTime" Binding="{Binding  OpenTime}" />
+                <DataGridTextColumn Header="CloseTime" Binding="{Binding  CloseTime}" />
+                <DataGridTextColumn Header="IsLongTrade" Binding="{Binding  IsLongTrade}" />
+                <DataGridTextColumn Header="AvgEntryPrice" Binding="{Binding  AvgEntryPrice}" />
+                <DataGridTextColumn Header="AvgExitPrice" Binding="{Binding  AvgExitPrice}" />
+                <DataGridTextColumn Header="CumEntryShares" Binding="{Binding  CumEntryShares}" />
+                <DataGridTextColumn Header="CumExitShares" Binding="{Binding  CumExitShares}" />
+                <DataGridTextColumn Header="OpenPrice" Binding="{Binding  OpenPrice}" />
+                <DataGridTextColumn Header="ClosePrice" Binding="{Binding  ClosePrice}" />
+                <DataGridTextColumn Header="MinPrice" Binding="{Binding  MinPrice}" />
+                <DataGridTextColumn Header="MaxPrice" Binding="{Binding  MaxPrice}" />
+                <DataGridTextColumn Header="Pnl" Binding="{Binding  Pnl}" />
+            </DataGrid.Columns>
+
+        </DataGrid>
+
+
+    </Grid>
+
+</UserControl>

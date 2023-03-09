@@ -1,0 +1,107 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewModels="clr-namespace:BacktestGui.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="BacktestGui.Views.BacktestSelectorView">
+
+    <Design.DataContext>
+        <viewModels:BacktestSelectorViewModel />
+    </Design.DataContext>
+
+    <Grid
+        RowDefinitions="Auto, Auto">
+
+        <StackPanel
+            Orientation="Horizontal">
+            <TextBlock
+                Grid.Row="0"
+                Grid.Column="0"
+                Margin="5"
+                VerticalAlignment="Center"
+                Text="Start Date:" />
+            <CalendarDatePicker
+                Grid.Row="0"
+                Grid.Column="1"
+                Margin="5" />
+
+            <TextBlock
+                Grid.Row="0"
+                Grid.Column="2"
+                Margin="5"
+                VerticalAlignment="Center"
+                Text="End Date:" />
+            <CalendarDatePicker
+                Grid.Row="0"
+                Grid.Column="3" />
+
+            <TextBlock
+                Grid.Row="0"
+                Grid.Column="4"
+                Text="Grouping Number:"
+                Margin="5"
+                VerticalAlignment="Center" />
+            <ComboBox
+                Grid.Row="0"
+                Grid.Column="5"
+                Margin="5"
+                Items="{Binding SelectableBacktestGroupingNumbers}"
+                SelectedItem="{Binding SelectedBacktestGroupingNumber}"
+                VerticalAlignment="Center" />
+
+            <Button
+                Grid.Column="6"
+                Margin="5"
+                Content="Clear Filters"
+                Command="{Binding ClearFiltersCmd}" />
+
+            <TextBlock
+                Grid.Column="7"
+                Margin="5"
+                VerticalAlignment="Center"
+                Text="Sort Descending:" />
+
+            <CheckBox
+                Grid.Column="8"
+                Margin="5"
+                Name="SortDescending"
+                IsChecked="{Binding SortDescending, Mode=TwoWay}" />
+        </StackPanel>
+
+        <Grid
+            Grid.Row="1"
+            ColumnDefinitions="Auto,Auto">
+            <TextBlock
+                Grid.Column="0"
+                Margin="5"
+                Text="Backtest:"
+                VerticalAlignment="Center" />
+
+            <ComboBox
+                Grid.Column="1"
+                Margin="5"
+                x:Name="BacktestsSelectorComboBox"
+                Items="{Binding FilteredSelectableBacktests}"
+                SelectedItem="{Binding SelectedBacktest, Mode=TwoWay}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <ComboBoxItem>
+                            <ComboBoxItem.Content>
+                                <MultiBinding
+                                    StringFormat="Backtest: {0}, Start time: {1}, Group #{2}, Strategies: {3}">
+                                    <Binding Path="Id" />
+                                    <Binding Path="StartTime" />
+                                    <Binding Path="GroupingNumber" />
+                                    <Binding Path="StrategiesConcattedForView" />
+                                </MultiBinding>
+                            </ComboBoxItem.Content>
+                        </ComboBoxItem>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+        </Grid>
+
+
+    </Grid>
+</UserControl>

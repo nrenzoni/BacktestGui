@@ -1,0 +1,32 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewModels="clr-namespace:BacktestGui.ViewModels"
+             xmlns:indicators="clr-namespace:BacktestGui.Views.Indicators"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="BacktestGui.Views.TabViews.IndicatorResearchTabView">
+
+    <Design.DataContext>
+        <viewModels:IndicatorResearchTabViewModel />
+    </Design.DataContext>
+
+    <TabControl>
+
+        <TabItem Header="Profit Factor Table">
+
+            <indicators:ProfitFactorTableView
+                DataContext="{Binding ProfitFactorTableViewModel}" />
+
+        </TabItem>
+        
+        <TabItem Header="Multi Indicator Table">
+
+            <indicators:MultiIndicatorTableView
+                DataContext="{Binding MultiIndicatorTableViewModel}" />
+
+        </TabItem>
+
+    </TabControl>
+
+</UserControl>

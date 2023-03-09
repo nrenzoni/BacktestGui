@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AvaloniaProject">
+    <option name="projectPerEditor">
+      <map>
+        <entry key="AvaloniaDemo/App.axaml" value="AvaloniaDemo/AvaloniaDemo.csproj" />
+        <entry key="AvaloniaDemo/Views/MainWindow.axaml" value="AvaloniaDemo/AvaloniaDemo.csproj" />
+        <entry key="AvaloniaDemo/Views/MultiBacktestParametersComparisonBarChartView.axaml" value="AvaloniaDemo/AvaloniaDemo.csproj" />
+        <entry key="BacktestGui/App.axaml" value="BacktestGui/BacktestGui.csproj" />
+        <entry key="BacktestGui/Views/AllBacktestsDataView.axaml" value="BacktestGui/BacktestGui.csproj" />
+        <entry key="BacktestGui/Views/BacktestGroupSelectorView.axaml" value="BacktestGui/BacktestGui.csproj" />
+        <entry key="BacktestGui/Views/BacktestSelectorView.axaml" value="BacktestGui/BacktestGui.csproj" />
+        <entry key="BacktestGui/Views/Indicators/IndicatorSelectorView.axaml" value="BacktestGui/BacktestGui.csproj" />
+        <entry key="BacktestGui/Views/Indicators/IndicatorsTopLevelTabView.axaml" value="BacktestGui/BacktestGui.csproj" />
+        <entry key="BacktestGui/Views/Indicators/MultiIndicatorTableView.axaml" value="BacktestGui/BacktestGui.csproj" />
+        <entry key="BacktestGui/Views/Indicators/ProfitFactorTableView.axaml" value="BacktestGui/BacktestGui.csproj" />
+        <entry key="BacktestGui/Views/IndividualBacktestStatsView.axaml" value="BacktestGui/BacktestGui.csproj" />
+        <entry key="BacktestGui/Views/MainWindow.axaml" value="BacktestGui/BacktestGui.csproj" />
+        <entry key="BacktestGui/Views/MultiBacktestParametersComparisonBarChartView.axaml" value="BacktestGui/BacktestGui.csproj" />
+        <entry key="BacktestGui/Views/Shared/DateRangeSelectorView.axaml" value="BacktestGui/BacktestGui.csproj" />
+        <entry key="BacktestGui/Views/Shared/MultiFieldSelectorView.axaml" value="BacktestGui/BacktestGui.csproj" />
+        <entry key="BacktestGui/Views/Shared/SamplingFreqSelectorView.axaml" value="BacktestGui/BacktestGui.csproj" />
+        <entry key="BacktestGui/Views/Shared/SymbolUniverseSelectorVie.axaml" value="BacktestGui/BacktestGui.csproj" />
+        <entry key="BacktestGui/Views/Shared/SymbolUniverseSelectorView.axaml" value="BacktestGui/BacktestGui.csproj" />
+        <entry key="BacktestGui/Views/TabViews/IndicatorResearchTabView.axaml" value="BacktestGui/BacktestGui.csproj" />
+        <entry key="BacktestGui/Views/TabViews/IndividualBacktestStatViewerTabView.axaml" value="BacktestGui/BacktestGui.csproj" />
+        <entry key="BacktestGui/Views/TradesPlotPerTimeScatterPlot.axaml" value="BacktestGui/BacktestGui.csproj" />
+        <entry key="BacktestGui/Views/TradesPnlChartView.axaml" value="BacktestGui/BacktestGui.csproj" />
+        <entry key="BacktestGui/Views/TradesView.axaml" value="BacktestGui/BacktestGui.csproj" />
+        <entry key="BacktestGui2/App.axaml" value="BacktestGui2/BacktestGui2.csproj" />
+        <entry key="BacktestGui2/Views/AllBacktestsDataView.axaml" value="BacktestGui2/BacktestGui2.csproj" />
+        <entry key="BacktestGui2/Views/BacktestGroupSelectorView.axaml" value="BacktestGui2/BacktestGui2.csproj" />
+        <entry key="BacktestGui2/Views/BacktestSelectorView.axaml" value="BacktestGui2/BacktestGui2.csproj" />
+        <entry key="BacktestGui2/Views/IndividualBacktestStatsView.axaml" value="BacktestGui2/BacktestGui2.csproj" />
+        <entry key="BacktestGui2/Views/MaeToMfeChartView.axaml" value="BacktestGui2/BacktestGui2.csproj" />
+        <entry key="BacktestGui2/Views/MainWindow.axaml" value="BacktestGui2/BacktestGui2.csproj" />
+        <entry key="BacktestGui2/Views/MultiBacktestParametersComparisonBarChartView.axaml" value="BacktestGui2/BacktestGui2.csproj" />
+        <entry key="BacktestGui2/Views/TabViews/IndicatorResearchTabView.axaml" value="BacktestGui2/BacktestGui2.csproj" />
+        <entry key="BacktestGui2/Views/TabViews/IndividualBacktestStatViewerTabView.axaml" value="BacktestGui2/BacktestGui2.csproj" />
+        <entry key="BacktestGui2/Views/TabViews/InidicatorResearchTabView.axaml" value="BacktestGui2/BacktestGui2.csproj" />
+        <entry key="BacktestGui2/Views/TradesPlotPerTimeScatterPlot.axaml" value="BacktestGui2/BacktestGui2.csproj" />
+        <entry key="BacktestGui2/Views/TradesPnlChartView.axaml" value="BacktestGui2/BacktestGui2.csproj" />
+        <entry key="BacktestGui2/Views/TradesView.axaml" value="BacktestGui2/BacktestGui2.csproj" />
+      </map>
+    </option>
+  </component>
+</project>

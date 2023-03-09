@@ -1,0 +1,61 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:views="clr-namespace:BacktestGui.Views"
+             xmlns:tabViewModels="clr-namespace:BacktestGui.ViewModels.TabViewModels"
+             xmlns:views1="clr-namespace:BacktestGui.Views"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="BacktestGui.Views.TabViews.IndividualBacktestStatViewerTabView">
+
+    <Design.DataContext>
+        <tabViewModels:IndividualBacktestStatViewerTabViewModel />
+    </Design.DataContext>
+
+    <ScrollViewer
+        HorizontalScrollBarVisibility="Disabled">
+
+        <Grid RowDefinitions="Auto,5*,10*,10*" ColumnDefinitions="*, *">
+
+            <views1:BacktestSelectorView
+                Grid.Row="0"
+                Grid.Column="0"
+                Grid.ColumnSpan="1000"
+                DataContext="{Binding BacktestSelectorViewModel}" />
+
+            <views1:TradesView
+                Grid.Row="1"
+                Grid.Column="0"
+                Grid.ColumnSpan="1000"
+                Height="200"
+                HorizontalAlignment="Left"
+                DataContext="{Binding TradesViewModel}" />
+
+            <StackPanel
+                Grid.Row="2"
+                Grid.Column="0"
+                Orientation="Vertical">
+
+                <views1:TradesPnlChartView
+                    DataContext="{Binding TradesPnlChartViewModel}" />
+
+                <views1:MaeToMfeChartView
+                    DataContext="{Binding MaeToMfeChartViewModel}" />
+
+                <views1:TradesPlotPerTimeScatterPlot
+                    DataContext="{Binding TradesPlotPerTimeScatterPlotViewModel}" />
+
+            </StackPanel>
+
+            <views1:IndividualBacktestStatsView
+                Grid.Row="2"
+                Grid.Column="1"
+                VerticalAlignment="Top"
+                Height="400"
+                DataContext="{Binding IndividualBacktestStatsViewModel}" />
+
+        </Grid>
+
+    </ScrollViewer>
+
+</UserControl>

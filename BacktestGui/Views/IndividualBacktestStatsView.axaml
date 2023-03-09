@@ -1,0 +1,113 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewModels="clr-namespace:BacktestGui.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="BacktestGui.Views.IndividualBacktestStatsView">
+
+    <Design.DataContext>
+        <viewModels:IndividualBacktestStatsViewModel />
+    </Design.DataContext>
+
+    <Grid RowDefinitions="Auto,Auto,*">
+        <TextBlock
+            HorizontalAlignment="Center"
+            Text="Individual Backtest Stat Data" />
+
+        <StackPanel
+            Grid.Row="1"
+            Orientation="Horizontal">
+
+            <TextBlock
+                Margin="5"
+                VerticalAlignment="Center"
+                Text="Group By:" />
+
+            <ComboBox
+                Margin="5"
+                Items="{Binding RowGroupingTypeEnums}"
+                SelectedItem="{Binding RowGrouping, Mode=TwoWay}">
+            </ComboBox>
+
+            <TextBlock
+                Margin="5"
+                VerticalAlignment="Center"
+                Text="Long Stats:" />
+            <CheckBox
+                Margin="5"
+                IsChecked="{Binding ShowLongStats}" />
+
+            <TextBlock
+                Margin="5"
+                VerticalAlignment="Center"
+                Text="Short Stats:" />
+            <CheckBox
+                Margin="5"
+                IsChecked="{Binding ShowShortStats}" />
+
+        </StackPanel>
+
+        <DataGrid
+            Grid.Row="2"
+            Name="IndividualBacktestStatDataGrid"
+            DataContext="{Binding }"
+            Items="{Binding BacktestStats}"
+            AutoGenerateColumns="False"
+            IsReadOnly="True">
+
+            <DataGrid.Columns>
+                <DataGridTextColumn
+                    Header="{Binding RowGrouping}"
+                    Binding="{Binding GroupId}" />
+
+                <DataGridTextColumn
+                    Header="NumTrades"
+                    Binding="{Binding NumTrades}" />
+
+                <DataGridTextColumn
+                    Header="NumLongTrades"
+                    Binding="{Binding NumLongTrades}" />
+
+                <DataGridTextColumn
+                    Header="NumShortTrades"
+                    Binding="{Binding NumShortTrades}" />
+
+                <DataGridTextColumn
+                    Header="NumWins"
+                    Binding="{Binding NumWins}" />
+
+                <DataGridTextColumn
+                    Header="NumLosses"
+                    Binding="{Binding NumLosses}" />
+
+                <DataGridTextColumn
+                    Header="NumSymbolsTraded"
+                    Binding="{Binding NumSymbolsTraded}" />
+
+                <DataGridTextColumn
+                    Header="WinToLossRatio"
+                    Binding="{Binding WinToLossRatio, 
+                    Converter={StaticResource DecimalWithInfToStrConverter}}" />
+
+                <DataGridTextColumn 
+                    Header="Net Pnl"
+                    Binding="{Binding NetPnl}"/>
+
+                <DataGridTextColumn
+                    Header="CumProfit"
+                    Binding="{Binding CumProfit}" />
+
+                <DataGridTextColumn
+                    Header="CumLoss"
+                    Binding="{Binding CumLoss}" />
+
+                <DataGridTextColumn
+                    Header="CumProfitToCumLossRatio"
+                    Binding="{Binding CumProfitToCumLossRatio, Converter={StaticResource DecimalWithInfToStrConverter}}" />
+            </DataGrid.Columns>
+        </DataGrid>
+
+    </Grid>
+
+</UserControl>

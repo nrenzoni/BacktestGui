@@ -1,0 +1,78 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:indicators="clr-namespace:BacktestGui.ViewModels.Indicators"
+             xmlns:shared="clr-namespace:BacktestGui.Views.Shared"
+             xmlns:indicators1="clr-namespace:BacktestGui.Views.Indicators"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="BacktestGui.Views.Indicators.ProfitFactorTableView">
+
+    <Design.DataContext>
+        <indicators:ProfitFactorTableViewModel />
+    </Design.DataContext>
+
+    <Grid RowDefinitions="Auto,Auto,*">
+
+        <WrapPanel
+            Grid.Row="0"
+            Orientation="Horizontal">
+
+            <shared:SamplingFreqSelectorView
+                DataContext="{Binding SamplingFreqSelectorViewModel}" />
+
+            <shared:SymbolUniverseSelectorView
+                DataContext="{Binding SymbolUniverseSelectorViewModel}" />
+
+            <shared:DateRangeSelectorView
+                DataContext="{Binding DateRangeSelectorViewModel}" />
+
+            <WrapPanel>
+                <TextBlock Text="Log Returns:"
+                           VerticalAlignment="Center"
+                           Margin="5" />
+                <CheckBox
+                    IsChecked="{Binding LogReturns, Mode=TwoWay}"
+                    Margin="5" />
+            </WrapPanel>
+
+        </WrapPanel>
+        
+        <indicators1:IndicatorSelectorView
+            Grid.Row="1"
+            DataContext="{Binding IndicatorSelectorViewModel}" />
+
+        <DataGrid
+            Grid.Row="2"
+            Margin="5"
+            Name="ProfitFactorTable"
+            DataContext="{Binding ProfitFactorMatrixRows}"
+            Items="{Binding }"
+            AutoGenerateColumns="False">
+
+            <DataGrid.Columns>
+                <DataGridTextColumn
+                    Header="Thresh" Binding="{Binding Thresh}" />
+                <DataGridTextColumn
+                    Header="FracGtrOrEq" Binding="{Binding FracGtrOrEq}" />
+                <DataGridTextColumn
+                    Header="FracGtrOrEqLongPf"
+                    Binding="{Binding FracGtrOrEqLongPf, Converter={StaticResource DecimalWithInfToStrConverter}}" />
+                <DataGridTextColumn
+                    Header="FracGtrOrEqShortPf"
+                    Binding="{Binding FracGtrOrEqShortPf, Converter={StaticResource DecimalWithInfToStrConverter}}" />
+                <DataGridTextColumn
+                    Header="FracLess" Binding="{Binding FracLess}" />
+                <DataGridTextColumn
+                    Header="FracLessShortPf"
+                    Binding="{Binding FracLessShortPf, Converter={StaticResource DecimalWithInfToStrConverter}}" />
+                <DataGridTextColumn
+                    Header="FracLessLongPf"
+                    Binding="{Binding FracLessLongPf, Converter={StaticResource DecimalWithInfToStrConverter}}" />
+            </DataGrid.Columns>
+
+        </DataGrid>
+
+    </Grid>
+
+</UserControl>

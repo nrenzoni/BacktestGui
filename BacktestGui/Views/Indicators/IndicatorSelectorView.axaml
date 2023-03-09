@@ -1,0 +1,163 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:indicators="clr-namespace:BacktestGui.ViewModels.Indicators"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="BacktestGui.Views.Indicators.IndicatorSelectorView">
+
+    <Design.DataContext>
+        <indicators:IndicatorSelectorViewModel />
+    </Design.DataContext>
+
+    <WrapPanel Orientation="Vertical">
+
+        <WrapPanel HorizontalAlignment="Center">
+            <TextBlock
+                Text="Indicator Selector" />
+        </WrapPanel>
+
+        <WrapPanel>
+            <TextBlock
+                Text="Existing Only:"
+                Margin="5"
+                VerticalAlignment="Center" />
+            <CheckBox
+                Name="ExistingIndicatorsOnlyCheckbox"
+                IsChecked="{Binding ExistingIndicatorsOnly}" />
+
+            <TextBlock
+                Text="All Combinations:"
+                Margin="5"
+                VerticalAlignment="Center" />
+            <CheckBox
+                Name="AllIndicatorCombinationsCheckbox"
+                IsChecked="{Binding !ExistingIndicatorsOnly}" />
+        </WrapPanel>
+
+
+        <ScrollViewer
+            MaxWidth="600"
+            MaxHeight="300"
+            HorizontalScrollBarVisibility="Visible"
+            VerticalScrollBarVisibility="Visible">
+
+            <Grid
+                ColumnDefinitions="Auto,Auto">
+
+                <ListBox
+                    Name="ExistingIndicatorsListBox"
+                    IsVisible="{Binding ExistingIndicatorsOnly}"
+                    Items="{Binding IndicatorWithParams}"
+                    SelectionMode="Multiple,Toggle"
+                    Selection="{Binding ExistingIndicatorsSelection}">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock>
+                                <TextBlock.Text>
+                                    <MultiBinding
+                                        StringFormat="{}{0} {1}">
+
+                                        <Binding Path="Indicator"></Binding>
+                                        <Binding Path="IndicatorParamsStr"></Binding>
+
+                                    </MultiBinding>
+                                </TextBlock.Text>
+                            </TextBlock>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+
+                <Grid
+                    Grid.Column="0"
+                    RowDefinitions="Auto,*"
+                    IsVisible="{Binding !ExistingIndicatorsOnly}">
+
+                    <WrapPanel>
+                        <TextBlock
+                            Text="Indicator:"
+                            VerticalAlignment="Center" />
+                        <ComboBox
+                            Items="{Binding IndicatorParameterDefinitionMap.Keys}"
+                            SelectedItem="{Binding SelectedIndicator}">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock>
+                                        <TextBlock.Text>
+                                            <MultiBinding
+                                                StringFormat="{}{0}">
+                                                <Binding Path=""></Binding>
+                                            </MultiBinding>
+                                        </TextBlock.Text>
+                                    </TextBlock>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+                    </WrapPanel>
+
+                    <Grid
+                        Grid.Row="1"
+                        RowDefinitions="Auto,*"
+                        Height="300"
+                        Width="300"
+                        ShowGridLines="True"
+                        Margin="5">
+
+                        <Grid
+                            Grid.Row="0"
+                            Name="AllIndicatorLabelsGrid1"
+                            ShowGridLines="True">
+                        </Grid>
+
+                        <Grid
+                            Grid.Row="1"
+                            Name="AllIndicatorSelectionGrid1"
+                            ShowGridLines="True" />
+
+                    </Grid>
+
+                </Grid>
+
+                <Grid
+                    Grid.Column="1"
+                    RowDefinitions="Auto,*">
+
+                    <WrapPanel>
+                        <TextBlock
+                            Text="Indicator Wrappers:"
+                            VerticalAlignment="Center" />
+
+                        <ComboBox
+                            Items="{Binding IndicatorWrapperParameterDefinitionMap.Keys}"
+                            SelectedItem="{Binding SelectedIndicatorWrapper}" />
+
+                    </WrapPanel>
+
+                    <Grid
+                        Grid.Row="1"
+                        RowDefinitions="Auto,*"
+                        Height="300"
+                        Width="300"
+                        ShowGridLines="True"
+                        Margin="5">
+
+                        <Grid
+                            Grid.Row="0"
+                            Name="IndicatorWrappersLabelsGrid1"
+                            ShowGridLines="True">
+                        </Grid>
+
+                        <Grid
+                            Grid.Row="1"
+                            Name="IndicatorWrappersSelectionGrid1"
+                            ShowGridLines="True" />
+
+                    </Grid>
+
+                </Grid>
+            </Grid>
+        </ScrollViewer>
+
+    </WrapPanel>
+
+</UserControl>

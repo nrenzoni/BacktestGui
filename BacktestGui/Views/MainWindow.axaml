@@ -1,0 +1,55 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:views="clr-namespace:BacktestGui.Views"
+        xmlns:tabViews="clr-namespace:BacktestGui.Views.TabViews"
+        xmlns:viewModels="clr-namespace:BacktestGui.ViewModels"
+        xmlns:views1="clr-namespace:BacktestGui.Views"
+        xmlns:tabViews1="clr-namespace:BacktestGui.Views.TabViews"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="BacktestGui.Views.MainWindow"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="BacktestGui">
+
+    <Design.DataContext>
+        <viewModels:MainWindowViewModel />
+    </Design.DataContext>
+
+    <TabControl
+        Padding="20"
+        SelectionChanged="SelectingItemsControl_OnSelectionChanged">
+
+        <TabItem Header="Parameter Comparer" VerticalContentAlignment="Center" VerticalAlignment="Center">
+
+            <Grid RowDefinitions="Auto,*">
+                <views1:BacktestGroupSelectorView
+                    DataContext="{Binding BacktestGroupSelectorViewModel}" />
+
+                <views1:MultiBacktestParametersComparisonBarChartView
+                    Grid.Row="1"
+                    DataContext="{Binding MultiBacktestParametersComparisonBarChartViewModel}" />
+            </Grid>
+
+        </TabItem>
+
+        <TabItem Header="Individual Backtest Stat Viewer">
+            <tabViews1:IndividualBacktestStatViewerTabView
+                DataContext="{Binding IndividualBacktestStatViewerTabViewModel}" />
+        </TabItem>
+
+        <TabItem Header="All Backtests">
+            <views1:AllBacktestsDataView DataContext="{Binding AllBacktestsDataViewModel}" />
+        </TabItem>
+
+        <TabItem Header="Indicator Research">
+            <tabViews1:IndicatorResearchTabView DataContext="{Binding IndicatorResearchTabViewModel}" />
+        </TabItem>
+
+        <TabItem Header="Market Overview">
+
+        </TabItem>
+
+    </TabControl>
+
+</Window>
